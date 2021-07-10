@@ -8,7 +8,6 @@ const Messages = ({navigation}) => {
     const [user, setUser] = useState({});
     const [historyChat, setHistoryChat] = useState([]);
 
-    
     useEffect(() =>{
         getDataUserFromLocal();
         const rootDB = firebase.database().ref();
@@ -21,7 +20,7 @@ const Messages = ({navigation}) => {
         const data = [];
 
         const promises = await Object.keys(oldData).map(async key => {
-          const urlUidAdmin = `admin/${oldData[key].uidPartner}`;
+          const urlUidAdmin = `users/${oldData[key].uidPartner}`;
           const detailAdmin = await rootDB.child(urlUidAdmin).once('value');
           data.push({
             id: key,
@@ -42,15 +41,17 @@ const Messages = ({navigation}) => {
 
     const getDataUserFromLocal = () => {
     getData('user').then(res => {
+        console.log('user data : ', res)
       setUser(res);
     });
   };
     return (
         <View style={styles.pages}>
             <View>
-                <Headers title="Messages" subTitle="Cek pesan dari admin disini!" />
+                <Headers title="Messages" subTitle="Cek pesan dari pelanggan disini!" />
                 <View style={styles.chat}>
                     <View>
+
                 {historyChat.map(chat => {
                     const dataAdmin = {
                         id: chat.detailAdmin.uid,

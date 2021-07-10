@@ -5,7 +5,6 @@ import { DummyAdmin } from '../../../assets'
 const Other = ({text, date, photo}) => {
     return (
     <View style={styles.container}>
-      <Image source={DummyAdmin} style={styles.avatar} />
       <View>
         <View style={styles.chatContent}>
           <Text style={styles.text}>{text}</Text>
@@ -19,7 +18,7 @@ const Other = ({text, date, photo}) => {
 export default Other
 
 const styles = StyleSheet.create({
-container: {
+  container: {
     marginBottom: 20,
     alignItems: 'flex-end',
     paddingLeft: 16,
@@ -29,7 +28,7 @@ container: {
   chatContent: {
     padding: 12,
     paddingRight: 18,
-    maxWidth: '80%',
+    backgroundColor: 'grey',
     borderRadius: 10,
     borderBottomLeftRadius: 0,
   },
@@ -41,7 +40,7 @@ container: {
   date: {
     fontSize: 11,
     fontFamily: 'Nunito-Regular',
-    color: '#8D92A3',
+    color: 'grey',
     marginTop: 8,
   },
 })

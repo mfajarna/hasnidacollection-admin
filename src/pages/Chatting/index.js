@@ -11,13 +11,12 @@ const Chatting = ({navigation, route}) => {
     const [user, setUser] = useState({});
     const [chatData, setChatData] = useState([]);
 
-
     useEffect(() =>{
-        getDataUserFromLocal();
-        const chatID = `${user.uid}_${dataAdmin.data.uid}`;
-        const urlFirebase = `chatting/${chatID}/allChat/`;
+      getDataUserFromLocal();
+      const chatID = `${dataAdmin.data.uid}_${user.uid}`;
+      const urlFirebase = `chatting/${chatID}/allChat/`;
 
-        firebase.database()
+      firebase.database()
       .ref(urlFirebase)
       .on('value', snapshot => {
         if (snapshot.val()) {
@@ -62,7 +61,8 @@ const Chatting = ({navigation, route}) => {
             chatContent: chatContent,
          };
 
-         const chatID = `${user.uid}_${dataAdmin.data.uid}`;
+         const chatID = `${dataAdmin.data.uid}_${user.uid}`;
+         
          const urlFirebase = `chatting/${chatID}/allChat/${setDateChat(today)}`;
          const urlMessageUser = `messages/${user.uid}/${chatID}`;
          const urlMessageDoctor = `messages/${dataAdmin.data.uid}/${chatID}`;
@@ -79,7 +79,7 @@ const Chatting = ({navigation, route}) => {
         uidPartner: user.uid,
         };
 
-        firebase.database()
+      firebase.database()
       .ref(urlFirebase)
       .push(data)
       .then(() => {
@@ -102,44 +102,43 @@ const Chatting = ({navigation, route}) => {
     return (
         <View style={styles.pages}>
             <View>
-                <Headers title="Messages" subTitle="Kirim pesan ke admin" onBack={() => navigation.goBack()} />
+                <Headers title="Messages" subTitle="Kirim pesan ke pelanggan disini!" onBack={() => navigation.goBack()} />
             </View>
             
-            <View style={styles.wrapperMessage}>
-        <ScrollView
-          showsVerticalScrollIndicator={false}>
-          {chatData.map(chat => {
-            return (
-              <View key={chat.id}>
-                <Text style={styles.chatDate}>{chat.id}</Text>
-                {chat.data.map((itemChat) => {
-                  const isMe = itemChat.data.sendBy === user.uid;
-                  return (
-                    <ChatItem key={itemChat.id}
-                        isMe={isMe}
-                        text={itemChat.data.chatContent}
-                        date={itemChat.data.chatTime}
-                    />
-                  );
-                })}
+          <View style={styles.wrapperMessage}>
+            <ScrollView
+              showsVerticalScrollIndicator={false}>
+              {chatData.map(chat => {
+                return (
+                  <View key={chat.id}>
+                    <Text style={styles.chatDate}>{chat.id}</Text>
+                    {chat.data.map(itemChat => {
+                      const isMe = itemChat.data.sendBy === user.uid;
+                      return (
+                        <ChatItem 
+                            key={itemChat.id}
+                            isMe={isMe}
+                            text={itemChat.data.chatContent}
+                            date={itemChat.data.chatTime}
+                        />
+                      );
+                    })}
               </View>
             );
           })}
-        </ScrollView>
-            </View>
-
+          </ScrollView>
+        </View>
             <InputChat
             value={chatContent}
             onChangeText={value => setChatContent(value)}
             onButtonPress={chatSend}
             targetChat={dataAdmin}
-            
             />
         </View>
     )
 }
 
-export default Chatting
+export default Chatting;
 
 const styles = StyleSheet.create({
     pages: {

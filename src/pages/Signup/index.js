@@ -35,7 +35,7 @@ const Signup = ({navigation}) => {
 
     console.log("status fbase", res);
     firebase.database()
-          .ref('users/' + res.user.uid + '/')
+          .ref('admin/' + res.user.uid + '/')
           .set(data);
       
     storeData('user', data)

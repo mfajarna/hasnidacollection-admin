@@ -15,7 +15,7 @@ const WelcomeUser = () => {
            <View style={styles.profileContainer}>
                <View>
                    <Text style={styles.nameCard}>Hello! {userProfile.name}</Text>
-                   <Text style={styles.desc}>Ayo belanja sekarang!</Text>
+                   <Text style={styles.desc}>Dashboard Admin</Text>
                </View>
                <Image source={{ uri: userProfile.profile_photo_path }} style={styles.profile}/>
            </View>

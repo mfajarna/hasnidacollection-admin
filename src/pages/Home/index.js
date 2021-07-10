@@ -10,7 +10,6 @@ const Home = ({onPress, navigation}) => {
   const [admin, setAdmin] = useState([]);
 
   useEffect(() =>{
-    getAdmin();
     getUserData();
     navigation.addListener('focus', () => {
       getUserData();
@@ -23,28 +22,6 @@ const Home = ({onPress, navigation}) => {
     });
   };
 
-  const getAdmin = () => {
-    firebase.database()
-      .ref('admin/')
-      .limitToLast(3)
-      .once('value')
-      .then(res => {
-        if (res.val()) {
-          const oldData = res.val();
-          const data = [];
-          Object.keys(oldData).map(key => {
-            data.push({
-              id: key,
-              data: oldData[key],
-            });
-          });
-          setAdmin(data);
-        }
-      })
-      .catch(err => {
-        showError(err.message);
-      });
-  }
 
   return (
     <View style={styles.pages}>
@@ -55,8 +32,8 @@ const Home = ({onPress, navigation}) => {
       </View>
       <Gap height={10} />
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
-        <Text style={styles.text}>Mau belanja apa</Text>
-        <Text style={styles.text}>hari ini ?</Text>
+        <Text style={styles.text}>Atur menu dan konfirmasi </Text>
+        <Text style={styles.text}>konfirmasi disini!</Text>
         <Gap height={30} />
 
         <View style={styles.page}>
@@ -102,21 +79,6 @@ const Home = ({onPress, navigation}) => {
                 <Kategori label="BEAUTY" onPress={() => navigation.navigate('CategoryBeauty') } />
               </View>
             </ScrollView>
-          </View>
-          <View style={styles.adminSection}>
-            <Text style={styles.textFitur}>Kontak Admin</Text>
-              <View style={styles.admin}>
-                {admin.map(admin => {
-                  return(
-                      <AdminSection
-                      key={admin.id} 
-                      name={admin.data.name}
-                      onPress={() => navigation.navigate('Chatting', admin)}
-                      />
-                    )
-                })}
-              
-              </View>
           </View>
         </View>
 

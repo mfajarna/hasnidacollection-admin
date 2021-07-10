@@ -18,7 +18,7 @@ const Signin = ({navigation}) => {
     firebase.auth().signInWithEmailAndPassword(form.email, form.password)
     .then(res => {
       firebase.database()
-      .ref(`users/${res.user.uid}/`)
+      .ref(`admin/${res.user.uid}/`)
       .once('value')
       .then(resDB => {
         if(resDB.val()){
