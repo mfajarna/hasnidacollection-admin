@@ -58,13 +58,13 @@ const InProgress = () => {
           return (
             <ItemListFood
               key={order.id}
-              rating={order.collection.rate}
-              image={{uri: order.collection.picturePath}}
-              onPress={() => navigation.navigate('OrderDetail', order)}
+              onPress={() => navigation.navigate('pesananDetail', order)}
+              image={{ uri: order.collection.picturePath }}
               type="in-progress"
               items={order.quantity}
               price={order.total}
-              name={order.collection.name}
+              name={order.user.name}
+              itemName={order.collection.name}
             />
           );
         })}
@@ -138,9 +138,9 @@ const initialLayout = {width: Dimensions.get('window').width};
 const OrderTabSection = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    {key: 'first', title: 'In Progress'},
-    {key: 'second', title: 'Confirmation'},
-    {key: 'third', title: 'Past Orders'},
+    {key: 'first', title: 'Sudah Bayar'},
+    {key: 'second', title: 'Delivery'},
+    {key: 'third', title: 'Sudah Sampai'},
   ]);
 
   const renderScene = SceneMap({

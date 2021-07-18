@@ -14,6 +14,7 @@ const ItemListFood = ({
   date,
   status,
   number,
+  itemName,
 }) => {
   const renderContent = () => {
     switch (type) {
@@ -46,7 +47,8 @@ const ItemListFood = ({
         return (
           <>
             <View style={{flex: 1}}>
-              <Text style={styles.title}>{name}</Text>
+              <Text style={styles.title}>Atas Nama: {name}</Text>
+              <Text style={styles.desc}>{itemName}</Text>
               <Text style={styles.desc}>
                 {items} items . <Number number={price} />
               </Text>

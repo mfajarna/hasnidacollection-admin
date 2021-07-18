@@ -33,7 +33,7 @@ const Home = ({onPress, navigation}) => {
       <Gap height={10} />
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <Text style={styles.text}>Atur menu dan konfirmasi </Text>
-        <Text style={styles.text}>konfirmasi disini!</Text>
+        <Text style={styles.text}>Pelanggan disini!</Text>
         <Gap height={30} />
 
         <View style={styles.page}>

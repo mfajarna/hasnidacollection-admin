@@ -1,31 +1,29 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View,ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {EmptyOrder, Headers, OrderTabSection} from '../../components/molecules';
+import {EmptyOrder, Headers, ListCostumer, OrderTabSection} from '../../components/molecules';
+import { getCostumerData } from '../../redux/action';
 import {getOrders} from '../../redux/action/order';
 
 const Keranjang = () => {
   const [isEmpty] = useState(false);
   const dispatch = useDispatch();
-  const {orders} = useSelector(state => state.orderReducer);
+  const {dataCostumer} = useSelector(state => state.costumerReducer);
 
   useEffect(() => {
-    dispatch(getOrders());
+    dispatch(getCostumerData());
   }, []);
 
-  console.log('list orders: ', orders);
   return (
     <View style={styles.page}>
-      {orders.length < 1 ? (
-        <EmptyOrder />
-      ) : (
         <View style={styles.content}>
-          <Headers title="Keranjang" subTitle="Cek pesananmu disini" />
+          <Headers title="Cek Pesanan" subTitle="Cek pesananmu pelanggan disini" />
           <View style={styles.tabContainer}>
+            <Text style={styles.title}>Daftar List Pembelian Costumer</Text>
             <OrderTabSection />
           </View>
         </View>
-      )}
+  
     </View>
   );
 };
@@ -43,4 +41,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 24,
   },
+  title:{
+    fontFamily: 'Nunito-Regular',
+    fontSize: 16,
+    color: '#020202',
+    paddingHorizontal: 24,
+    marginBottom: 24,
+  }
 });

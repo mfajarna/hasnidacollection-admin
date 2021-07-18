@@ -24,6 +24,7 @@ import {
   Pembelian,
   Messages,
   Chatting,
+  PesananDetail,
 } from '../pages';
 import {BottomNavigator} from '../components';
 
@@ -34,8 +35,7 @@ const MainApp = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Keranjang" component={Keranjang} />
-      <Tab.Screen name="Scan" component={Scan} />
+      <Tab.Screen name="Cek Pesanan" component={Keranjang} />
       <Tab.Screen name="Messages" component={Messages} />
       <Tab.Screen name="Akun" component={Akun} />
 
@@ -134,6 +134,11 @@ const Router = () => {
       <Stack.Screen
         name="Chatting"
         component={Chatting}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="pesananDetail"
+        component={PesananDetail}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

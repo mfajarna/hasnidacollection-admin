@@ -20,15 +20,20 @@ export const getOrders = () => dispatch => {
 };
 
 export const getInProgress = () => dispatch => {
+
+  const data = {
+    status: 'Sudah Bayar'
+  }
+
   getData('token').then(resToken => {
     axios
-      .get('http://ecommerce.iottelnet.com/api/transaction?status=PENDING', {
+      .get('http://ecommerce.iottelnet.com/api/fetchTransaksi/?status=Sudah Bayar', {
         headers: {
           Authorization: resToken.value,
         },
       })
       .then(res => {
-        console.log('get In Progress: ', res);
+        console.log('status Sudah Bayar: ', res);
         dispatch({type: 'SET_IN_PROGRESS', value: res.data.data.data});
       })
       .catch(err => {

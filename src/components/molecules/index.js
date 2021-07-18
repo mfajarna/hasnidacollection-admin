@@ -21,6 +21,7 @@ import ListAdmin from './ListAdmin';
 import InputChat from './InputChat';
 import AdminSection from './AdminSection';
 import ChatItem from './ChatItem';
+import ListCostumer from './ListCostumer';
 
 export {
   Headers,
@@ -45,5 +46,6 @@ export {
   ListAdmin,
   InputChat,
   AdminSection,
-  ChatItem
+  ChatItem,
+  ListCostumer
 };
