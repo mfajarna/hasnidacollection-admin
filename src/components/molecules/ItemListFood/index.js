@@ -1,10 +1,14 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {Number, Rating} from '..';
+import { setLoading } from '../../../redux/action';
+import { getData } from '../../../utils';
 
 const ItemListFood = ({
   image,
   onPress,
+  onPressBayar,
   items,
   stock,
   rating,
@@ -15,8 +19,36 @@ const ItemListFood = ({
   status,
   number,
   itemName,
+  section,
+  idPesanan,
 
 }) => {
+
+  const[token,setToken] = useState('');
+
+  useEffect(() => {
+    getData('token').then(resToken => {
+      setToken(resToken.value)
+    })
+  }, []);
+
+  const onDelivery = () => {
+      const data = {
+            status: 'ON_DELIVERY'
+        }
+        axios.post(`http://ecommerce.iottelnet.com/api/transaction/${idPesanan}`, data, {
+            headers: {
+                Authorization: token
+            }
+        }).then(res => {
+            showMessage('Berhasil konfirmasi order','success');
+           
+        }).catch(err => {
+            console.log(err.message);
+            showMessage('Gagal Konfirmasi order');
+        })
+  }
+
   const renderContent = () => {
     switch (type) {
       case 'product':
@@ -90,6 +122,11 @@ const ItemListFood = ({
       <View style={styles.container}>
         <Image source={image} style={styles.image} />
         {renderContent()}
+        {section === 'konfirmasi' && (
+          <TouchableOpacity style={styles.buttonBayar} activeOpacity={0.6} onPress={onDelivery}>
+                <Text style={styles.textBayar}>Delivery</Text>
+        </TouchableOpacity>
+        )}
       </View>
     </TouchableOpacity>
   );
@@ -136,4 +173,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito-Regular',
     color: '#D9435E',
   },
+  buttonBayar: {
+    backgroundColor: '#26B99A',
+    padding: 6,
+    borderRadius: 3,
+  },
+  textBayar:{
+    fontSize: 14,
+    fontFamily: 'Nunito-SemiBold',
+    color: 'white'
+  }
 });

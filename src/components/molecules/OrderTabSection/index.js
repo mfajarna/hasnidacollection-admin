@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {
   getConfirmation,
+  getDelivery,
   getInProgress,
   getPastOrders,
 } from '../../../redux/action/order';
@@ -76,15 +77,15 @@ const InProgress = () => {
 const Delivery = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const {inProgress} = useSelector(state => state.orderReducer);
+  const {delivery} = useSelector(state => state.orderReducer);
   useEffect(() => {
-    dispatch(getInProgress());
+    dispatch(getDelivery());
   }, []);
 
   return (
     <ScrollView>
       <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-        {inProgress.map(order => {
+        {delivery.map(order => {
           return (
             <ItemListFood
               key={order.id}
@@ -143,8 +144,6 @@ const Konfirmation = () => {
     dispatch(getConfirmation());
   }, []);
 
-  const type ="konfirmasi";
-
   return (
     <ScrollView>
       <View style={{paddingTop: 8, paddingHorizontal: 24}}>
@@ -152,9 +151,10 @@ const Konfirmation = () => {
           return (
             <ItemListFood
               key={order.id}
-              onPress={() => navigation.navigate('pesananDetail', order)}
+              idPesanan={order.id}
               image={{ uri: order.collection.picturePath }}
               type="in-progress"
+              section="konfirmasi"
               items={order.quantity}
               price={order.total}
               name={order.user.name}

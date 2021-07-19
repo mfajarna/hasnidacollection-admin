@@ -56,6 +56,22 @@ export const getPastOrders = () => dispatch => {
       });
   });
 };
+export const getDelivery = () => dispatch => {
+  getData('token').then(resToken => {
+    axios
+      .get('http://ecommerce.iottelnet.com/api/fetchTransaksi/?status=ON_DELIVERY', {
+        headers: {
+          Authorization: resToken.value,
+        },
+      })
+      .then(res => {
+        dispatch({type: 'SET_DELIVERY', value: res.data.data.data});
+      })
+      .catch(err => {
+        console.log('err', err);
+      });
+  });
+};
 
 export const getConfirmation = () => dispatch => {
   getData('token').then(resToken => {
