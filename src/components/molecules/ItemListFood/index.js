@@ -15,6 +15,7 @@ const ItemListFood = ({
   status,
   number,
   itemName,
+
 }) => {
   const renderContent = () => {
     switch (type) {

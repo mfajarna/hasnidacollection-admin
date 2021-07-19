@@ -73,6 +73,36 @@ const InProgress = () => {
   );
 };
 
+const Delivery = () => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const {inProgress} = useSelector(state => state.orderReducer);
+  useEffect(() => {
+    dispatch(getInProgress());
+  }, []);
+
+  return (
+    <ScrollView>
+      <View style={{paddingTop: 8, paddingHorizontal: 24}}>
+        {inProgress.map(order => {
+          return (
+            <ItemListFood
+              key={order.id}
+              onPress={() => navigation.navigate('pesananDetail', order)}
+              image={{ uri: order.collection.picturePath }}
+              type="in-progress"
+              items={order.quantity}
+              price={order.total}
+              name={order.user.name}
+              itemName={order.collection.name}
+            />
+          );
+        })}
+      </View>
+    </ScrollView>
+  );
+};
+
 const PastOrders = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -103,6 +133,8 @@ const PastOrders = () => {
   );
 };
 
+
+
 const Konfirmation = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -111,6 +143,8 @@ const Konfirmation = () => {
     dispatch(getConfirmation());
   }, []);
 
+  const type ="konfirmasi";
+
   return (
     <ScrollView>
       <View style={{paddingTop: 8, paddingHorizontal: 24}}>
@@ -118,13 +152,13 @@ const Konfirmation = () => {
           return (
             <ItemListFood
               key={order.id}
-              rating={order.collection.rate}
-              image={{uri: order.collection.picturePath}}
-              onPress={() => navigation.navigate('OrderDetail', order)}
+              onPress={() => navigation.navigate('pesananDetail', order)}
+              image={{ uri: order.collection.picturePath }}
               type="in-progress"
               items={order.quantity}
               price={order.total}
-              name={order.collection.name}
+              name={order.user.name}
+              itemName={order.collection.name}
             />
           );
         })}
@@ -139,14 +173,16 @@ const OrderTabSection = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: 'first', title: 'Sudah Bayar'},
-    {key: 'second', title: 'Delivery'},
-    {key: 'third', title: 'Sudah Sampai'},
+    {key: 'second', title: 'Konfirmasi'},
+    {key: 'third', title: 'Delivery'},
+    {key: 'fourth', title: 'Selesai'},
   ]);
 
   const renderScene = SceneMap({
     first: InProgress,
     second: Konfirmation,
-    third: PastOrders,
+    third: Delivery,
+    fourth: PastOrders,
   });
   return (
     <TabView

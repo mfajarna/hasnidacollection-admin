@@ -9,10 +9,12 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { getData, showMessage } from '../../utils';
 
-const PesananDetail = ({navigation, route }) => {
+const PesananDetail = ({navigation, route, type }) => {
     const info = route.params;
+    const typeInfo = route.params;
     const[token,setToken] = useState('');
     console.log(info);
+
 
     useEffect(()=>{
         getData('token').then(resToken => {

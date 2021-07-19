@@ -10,7 +10,6 @@ export const getOrders = () => dispatch => {
         },
       })
       .then(res => {
-        console.log('get orders: ', res);
         dispatch({type: 'SET_ORDER', value: res.data.data.data});
       })
       .catch(err => {
@@ -33,7 +32,6 @@ export const getInProgress = () => dispatch => {
         },
       })
       .then(res => {
-        console.log('status Sudah Bayar: ', res);
         dispatch({type: 'SET_IN_PROGRESS', value: res.data.data.data});
       })
       .catch(err => {
@@ -51,7 +49,6 @@ export const getPastOrders = () => dispatch => {
         },
       })
       .then(res => {
-        console.log('get Past Orders: ', res);
         dispatch({type: 'SET_PAST_ORDERS', value: res.data.data.data});
       })
       .catch(err => {
@@ -64,7 +61,7 @@ export const getConfirmation = () => dispatch => {
   getData('token').then(resToken => {
     axios
       .get(
-        'http://ecommerce.iottelnet.com/api/transaction?status=ON_DELIVERY',
+        'http://ecommerce.iottelnet.com/api/fetchTransaksi/?status=CONFIRMATION',
         {
           headers: {
             Authorization: resToken.value,
@@ -72,7 +69,6 @@ export const getConfirmation = () => dispatch => {
         },
       )
       .then(res => {
-        console.log('get Confirmation Orders: ', res);
         dispatch({type: 'SET_CONFIRMATION', value: res.data.data.data});
       })
       .catch(err => {
