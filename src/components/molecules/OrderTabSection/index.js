@@ -89,7 +89,6 @@ const Delivery = () => {
           return (
             <ItemListFood
               key={order.id}
-              onPress={() => navigation.navigate('pesananDetail', order)}
               image={{ uri: order.collection.picturePath }}
               type="in-progress"
               items={order.quantity}
@@ -113,6 +112,7 @@ const PastOrders = () => {
   }, []);
 
   return (
+    <ScrollView>
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
       {pastOrders.map(order => {
         return (
@@ -131,6 +131,7 @@ const PastOrders = () => {
         );
       })}
     </View>
+    </ScrollView>
   );
 };
 

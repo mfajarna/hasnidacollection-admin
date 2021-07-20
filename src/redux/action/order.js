@@ -43,7 +43,7 @@ export const getInProgress = () => dispatch => {
 export const getPastOrders = () => dispatch => {
   getData('token').then(resToken => {
     axios
-      .get('http://ecommerce.iottelnet.com/api/transaction?status=CANCELLED', {
+      .get('http://ecommerce.iottelnet.com/api/fetchTransaksi/?status=DONE', {
         headers: {
           Authorization: resToken.value,
         },

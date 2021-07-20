@@ -6,9 +6,7 @@ import { getCostumerData } from '../../redux/action';
 import {getOrders} from '../../redux/action/order';
 
 const Keranjang = () => {
-  const [isEmpty] = useState(false);
   const dispatch = useDispatch();
-  const {dataCostumer} = useSelector(state => state.costumerReducer);
 
   useEffect(() => {
     dispatch(getCostumerData());

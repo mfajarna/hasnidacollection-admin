@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   status: {
     fontSize: 12,
     fontFamily: 'Nunito-Regular',
-    color: '#D9435E',
+    color: '#1ABC9C',
   },
   buttonBayar: {
     backgroundColor: '#26B99A',
