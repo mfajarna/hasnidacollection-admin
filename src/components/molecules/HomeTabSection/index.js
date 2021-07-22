@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {StyleSheet, Text, View, Dimensions, ScrollView} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {ItemListFood} from '..';
-import {DummyImg1, DummyImg2, DummyImg3} from '../../../assets';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCollectionDataByTypes} from '../../../redux/action/home';
@@ -49,6 +48,7 @@ const NewSection = () => {
   }, []);
 
   return (
+    <ScrollView>
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
       {newCollection.map(itemNew => {
         return (
@@ -65,6 +65,7 @@ const NewSection = () => {
         );
       })}
     </View>
+    </ScrollView>
   );
 };
 
@@ -77,6 +78,7 @@ const PopularSection = () => {
     dispatch(getCollectionDataByTypes('popular'));
   }, []);
   return (
+    <ScrollView>
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
       {popular.map(itemPopular => {
         return (
@@ -93,6 +95,7 @@ const PopularSection = () => {
         );
       })}
     </View>
+    </ScrollView>
   );
 };
 
@@ -105,6 +108,7 @@ const RecommendedSection = () => {
     dispatch(getCollectionDataByTypes('recommended'));
   }, []);
   return (
+    <ScrollView>
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
       {recommended.map(itemRecommended => {
         return (
@@ -121,6 +125,7 @@ const RecommendedSection = () => {
         );
       })}
     </View>
+    </ScrollView>
   );
 };
 

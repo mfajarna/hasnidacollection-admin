@@ -21,6 +21,7 @@ import Pembelian from './Pembelian';
 import Messages from './Messages';
 import Chatting from './Chatting';
 import PesananDetail from './PesananDetail';
+import LelangBarang from './LelangBarang';
 
 export {
   SplashScreen,
@@ -45,5 +46,6 @@ export {
   Pembelian,
   Messages,
   Chatting,
-  PesananDetail
+  PesananDetail,
+  LelangBarang
 };

@@ -8,7 +8,7 @@ const CategoryPakaian = ({navigation}) => {
       <Headers
         title="Kategori Pakaian"
         subTitle="Cari pakaian favoritmu"
-        onBack={() => navigation.reset({index: 0, routes:[{name:'MainApp'}]})}
+        onBack={() => navigation.reset({index: 0, routes:[{name:'LelangBarang'}]})}
       />
 
       <View style={styles.tabContainer}>

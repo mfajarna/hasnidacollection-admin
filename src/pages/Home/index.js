@@ -2,14 +2,18 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 
 import {Fitur, Gap, Kategori, SearchInput} from '../../components/atoms';
-import {AdminSection, HomeTabSection, WelcomeUser} from '../../components/molecules';
-import firebase from '../../config/Fire'
-import { getData } from '../../utils';
+import {
+  AdminSection,
+  HomeTabSection,
+  WelcomeUser,
+} from '../../components/molecules';
+import firebase from '../../config/Fire';
+import {getData} from '../../utils';
 
 const Home = ({onPress, navigation}) => {
   const [admin, setAdmin] = useState([]);
 
-  useEffect(() =>{
+  useEffect(() => {
     getUserData();
     navigation.addListener('focus', () => {
       getUserData();
@@ -21,7 +25,6 @@ const Home = ({onPress, navigation}) => {
       const data = res;
     });
   };
-
 
   return (
     <View style={styles.pages}>
@@ -41,10 +44,16 @@ const Home = ({onPress, navigation}) => {
           <Gap height={12} />
           <View style={styles.fitur}>
             <View style={styles.content}>
-              <Fitur label="Lelang Barang" />
+              <Fitur
+                label="Lelang Barang"
+                onPress={() => navigation.navigate('LelangBarang')}
+              />
             </View>
             <View style={styles.content}>
-              <Fitur label="Pembelian" onPress={() => navigation.navigate('Pembelian')} />
+              <Fitur
+                label="Pembelian"
+                onPress={() => navigation.navigate('Pembelian')}
+              />
             </View>
           </View>
           <View style={styles.fitur}>
@@ -67,21 +76,32 @@ const Home = ({onPress, navigation}) => {
                 />
               </View>
               <View style={styles.kategoriItem}>
-                <Kategori label="HEELS"  onPress={() => navigation.navigate('CategoryHeels') } />
+                <Kategori
+                  label="HEELS"
+                  onPress={() => navigation.navigate('CategoryHeels')}
+                />
               </View>
               <View style={styles.kategoriItem}>
-                <Kategori label="HIJAB" onPress={() => navigation.navigate('CategoryHijab') } />
+                <Kategori
+                  label="HIJAB"
+                  onPress={() => navigation.navigate('CategoryHijab')}
+                />
               </View>
               <View style={styles.kategoriItem}>
-                <Kategori label="TAS" onPress={() => navigation.navigate('CategoryTas') }/>
+                <Kategori
+                  label="TAS"
+                  onPress={() => navigation.navigate('CategoryTas')}
+                />
               </View>
               <View style={styles.kategoriItem}>
-                <Kategori label="BEAUTY" onPress={() => navigation.navigate('CategoryBeauty') } />
+                <Kategori
+                  label="BEAUTY"
+                  onPress={() => navigation.navigate('CategoryBeauty')}
+                />
               </View>
             </ScrollView>
           </View>
         </View>
-
       </ScrollView>
     </View>
   );
@@ -104,9 +124,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FAFAFC',
   },
-  adminSection:{
+  adminSection: {
     marginBottom: 15,
-  },    
+  },
   text: {
     fontSize: 18,
     fontFamily: 'Nunito-SemiBold',
@@ -144,7 +164,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 5,
   },
-  admin:{
+  admin: {
     marginTop: 15,
-  }
+  },
 });
