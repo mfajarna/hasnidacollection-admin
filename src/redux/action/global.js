@@ -4,3 +4,10 @@ export const setLoading = (value) => {
         value
     }
 }
+
+export const setTimer = (value) => {
+    return {
+        type: 'SET_TIMER',
+        value
+    }
+}

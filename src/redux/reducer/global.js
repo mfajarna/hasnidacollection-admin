@@ -2,6 +2,7 @@ const initGlobalState = {
     isError: false,
     message: 'Error',
     isLoading: false,
+    isTimer: false,
 }
 
 export const globalReducer = (state=initGlobalState, action) => {
@@ -20,6 +21,13 @@ export const globalReducer = (state=initGlobalState, action) => {
         return{
             ...state,
             isLoading: action.value,
+        }
+    }
+    if(action.type === 'SET_TIMER')
+    {
+        return{
+            ...state,
+            isTimer: action.value
         }
     }
 

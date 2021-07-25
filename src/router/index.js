@@ -26,6 +26,8 @@ import {
   Chatting,
   PesananDetail,
   LelangBarang,
+  LelangDetail,
+  StatusLelang,
 } from '../pages';
 import {BottomNavigator} from '../components';
 
@@ -145,6 +147,16 @@ const Router = () => {
       <Stack.Screen
         name="LelangBarang"
         component={LelangBarang}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="LelangDetail"
+        component={LelangDetail}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="StatusLelang"
+        component={StatusLelang}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

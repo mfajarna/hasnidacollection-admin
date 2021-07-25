@@ -7,6 +7,7 @@ const WelcomeUser = () => {
     const [userProfile,setUserProfile] = useState({});
     useEffect(() =>  {
         getData('userProfile').then(res => {
+            console.log(res)
             setUserProfile(res);
         })
     }, []);
@@ -17,7 +18,7 @@ const WelcomeUser = () => {
                    <Text style={styles.nameCard}>Hello! {userProfile.name}</Text>
                    <Text style={styles.desc}>Dashboard Admin</Text>
                </View>
-               <Image source={{ uri: userProfile.profile_photo_path }} style={styles.profile}/>
+               <Image source={{ uri: userProfile.profile_photo_url }} style={styles.profile}/>
            </View>
         </View>
     )

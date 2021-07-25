@@ -6,5 +6,6 @@ import SearchInput from './SearchInput';
 import Fitur from './Fitur';
 import Kategori from './Kategori';
 import ButtonIconSend from './ButtonIconSend';
+import TimeInput from './TimeInput';
 
-export {TextInput, Button, Gap, Select, SearchInput, Fitur, Kategori, ButtonIconSend};
+export {TextInput, Button, Gap, Select, SearchInput, Fitur, Kategori, ButtonIconSend, TimeInput};

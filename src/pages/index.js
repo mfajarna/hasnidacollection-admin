@@ -22,6 +22,8 @@ import Messages from './Messages';
 import Chatting from './Chatting';
 import PesananDetail from './PesananDetail';
 import LelangBarang from './LelangBarang';
+import LelangDetail from './LelangDetail';
+import StatusLelang from './StatusLelang';
 
 export {
   SplashScreen,
@@ -47,5 +49,7 @@ export {
   Messages,
   Chatting,
   PesananDetail,
-  LelangBarang
+  LelangBarang,
+  LelangDetail,
+  StatusLelang
 };

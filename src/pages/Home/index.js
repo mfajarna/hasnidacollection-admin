@@ -65,42 +65,6 @@ const Home = ({onPress, navigation}) => {
             </View>
           </View>
           <Gap height={10} />
-          <Text style={styles.textFitur}>Pilih Kategori</Text>
-          <Gap height={12} />
-          <View style={styles.kategori}>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              <View style={styles.kategoriItem}>
-                <Kategori
-                  label="PAKAIAN"
-                  onPress={() => navigation.navigate('CategoryPakaian')}
-                />
-              </View>
-              <View style={styles.kategoriItem}>
-                <Kategori
-                  label="HEELS"
-                  onPress={() => navigation.navigate('CategoryHeels')}
-                />
-              </View>
-              <View style={styles.kategoriItem}>
-                <Kategori
-                  label="HIJAB"
-                  onPress={() => navigation.navigate('CategoryHijab')}
-                />
-              </View>
-              <View style={styles.kategoriItem}>
-                <Kategori
-                  label="TAS"
-                  onPress={() => navigation.navigate('CategoryTas')}
-                />
-              </View>
-              <View style={styles.kategoriItem}>
-                <Kategori
-                  label="BEAUTY"
-                  onPress={() => navigation.navigate('CategoryBeauty')}
-                />
-              </View>
-            </ScrollView>
-          </View>
         </View>
       </ScrollView>
     </View>

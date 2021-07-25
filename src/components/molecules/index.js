@@ -22,6 +22,9 @@ import InputChat from './InputChat';
 import AdminSection from './AdminSection';
 import ChatItem from './ChatItem';
 import ListCostumer from './ListCostumer';
+import DetailLelang from './DetailLelang';
+import LelangStatus from './LelangStatus';
+import Timer from './Timer';
 
 export {
   Headers,
@@ -47,5 +50,8 @@ export {
   InputChat,
   AdminSection,
   ChatItem,
-  ListCostumer
+  ListCostumer,
+  DetailLelang,
+  LelangStatus,
+  Timer
 };

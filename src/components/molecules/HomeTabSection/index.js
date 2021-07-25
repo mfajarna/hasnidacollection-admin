@@ -60,7 +60,7 @@ const NewSection = () => {
             stock={itemNew.stock}
             rating={itemNew.rate}
             image={{uri: itemNew.picturePath}}
-            onPress={() => navigation.navigate('ItemDetail', itemNew)}
+            onPress={() => navigation.navigate('LelangDetail', itemNew)}
           />
         );
       })}

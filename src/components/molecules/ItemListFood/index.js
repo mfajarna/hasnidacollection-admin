@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {Number, Rating} from '..';
 import { setLoading } from '../../../redux/action';
-import { getData } from '../../../utils';
+import { API_HOST, getData, showMessage } from '../../../utils';
 
 const ItemListFood = ({
   image,
@@ -24,8 +24,9 @@ const ItemListFood = ({
 
 }) => {
 
-  const[token,setToken] = useState('');
 
+  const[token,setToken] = useState('');
+  
   useEffect(() => {
     getData('token').then(resToken => {
       setToken(resToken.value)
@@ -36,7 +37,7 @@ const ItemListFood = ({
       const data = {
             status: 'ON_DELIVERY'
         }
-        axios.post(`http://ecommerce.iottelnet.com/api/transaction/${idPesanan}`, data, {
+        axios.post(`${API_HOST.url}/transaction/${idPesanan}`, data, {
             headers: {
                 Authorization: token
             }

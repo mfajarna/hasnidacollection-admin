@@ -1,7 +1,8 @@
 import axios from "axios"
+import { API_HOST } from "../../utils/Api"
 
 export const getHijabData = () => (dispatch) => {
-    axios.get('http://ecommerce.iottelnet.com/api/collection?category=HIJAB')
+    axios.get(`${API_HOST.url}/collection?category=HIJAB`)
     .then(res => {
         dispatch({type: 'SET_HIJAB', value: res.data.data.data})
     }).catch(err => {
@@ -10,7 +11,7 @@ export const getHijabData = () => (dispatch) => {
 }
 
 export const getHijabDataByTypes = (types) => (dispatch) => {
-    axios.get(`http://ecommerce.iottelnet.com/api/collection?category=HIJAB&types=${types}`)
+    axios.get(`${API_HOST.url}/collection?category=HIJAB&types=${types}`)
     .then(res => {
         if(types === 'New Collection')
         {
@@ -28,7 +29,7 @@ export const getHijabDataByTypes = (types) => (dispatch) => {
 }
 
 export const getTasDataByTypes = (types) => (dispatch) => {
-    axios.get(`http://ecommerce.iottelnet.com/api/collection?category=TAS&types=${types}`)
+    axios.get(`${API_HOST.url}/collection?category=HIJABtypes=${types}`)
     .then(res => {
         if(types === 'New Collection')
         {
@@ -45,7 +46,7 @@ export const getTasDataByTypes = (types) => (dispatch) => {
     })
 }
 export const getBeautyDataByTypes = (types) => (dispatch) => {
-    axios.get(`http://ecommerce.iottelnet.com/api/collection?category=BEAUTY&types=${types}`)
+    axios.get(`${API_HOST.url}/collection?category=HIJAB&types=${types}`)
     .then(res => {
         if(types === 'New Collection')
         {

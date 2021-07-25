@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getData} from '../../utils';
+import {API_HOST, getData} from '../../utils';
 
 export const getOrders = () => dispatch => {
   getData('token').then(resToken => {
@@ -26,7 +26,7 @@ export const getInProgress = () => dispatch => {
 
   getData('token').then(resToken => {
     axios
-      .get('http://ecommerce.iottelnet.com/api/fetchTransaksi/?status=Sudah Bayar', {
+      .get(`${API_HOST.url}/fetchTransaksi/?status=Sudah Bayar`, {
         headers: {
           Authorization: resToken.value,
         },
@@ -43,7 +43,7 @@ export const getInProgress = () => dispatch => {
 export const getPastOrders = () => dispatch => {
   getData('token').then(resToken => {
     axios
-      .get('http://ecommerce.iottelnet.com/api/fetchTransaksi/?status=DONE', {
+      .get(`${API_HOST.url}/fetchTransaksi/?status=DONE`, {
         headers: {
           Authorization: resToken.value,
         },
@@ -59,7 +59,7 @@ export const getPastOrders = () => dispatch => {
 export const getDelivery = () => dispatch => {
   getData('token').then(resToken => {
     axios
-      .get('http://ecommerce.iottelnet.com/api/fetchTransaksi/?status=ON_DELIVERY', {
+      .get(`${API_HOST.url}/fetchTransaksi/?status=ON_DELIVERY`, {
         headers: {
           Authorization: resToken.value,
         },
@@ -77,7 +77,7 @@ export const getConfirmation = () => dispatch => {
   getData('token').then(resToken => {
     axios
       .get(
-        'http://ecommerce.iottelnet.com/api/fetchTransaksi/?status=CONFIRMATION',
+        `${API_HOST.url}/fetchTransaksi/?status=CONFIRMATION`,
         {
           headers: {
             Authorization: resToken.value,

@@ -35,7 +35,10 @@ import Ic_beauty_care from './ic_beauty_care.svg';
 import Ic_messages_off from './ic_messages_off';
 import Ic_messages_on from './ic_messages_on';
 import Ic_send from './ic_send.svg';
-import Ic_admin from './ic_admin.svg'
+import Ic_admin from './ic_admin.svg';
+import Ic_status_lelang from './ic_status_lelang.svg';
+import Ic_pemenang_lelang from './ic_pemenang_lelang.svg';
+import Ic_history_lelang from './ic_history_lelang.svg'
 
 export {
   Ic_arrow_back,
@@ -75,5 +78,8 @@ export {
   Ic_messages_off,
   Ic_messages_on,
   Ic_send,
-  Ic_admin
+  Ic_admin,
+  Ic_status_lelang,
+  Ic_history_lelang,
+  Ic_pemenang_lelang
 };

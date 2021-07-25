@@ -7,7 +7,7 @@ import { Button, Gap } from '../../components/atoms';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getData, showMessage } from '../../utils';
+import { API_HOST, getData, showMessage } from '../../utils';
 
 const PesananDetail = ({navigation, route }) => {
     const info = route.params;
@@ -27,7 +27,7 @@ const PesananDetail = ({navigation, route }) => {
         const data = {
             status: 'CONFIRMATION'
         }
-        axios.post(`http://ecommerce.iottelnet.com/api/transaction/${info.id}`, data, {
+        axios.post(`${API_HOST.url}/transaction/${info.id}`, data, {
             headers: {
                 Authorization: token
             }

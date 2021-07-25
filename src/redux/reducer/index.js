@@ -7,6 +7,7 @@ import {pakaianReducer} from './pakaian';
 import {heelsReducer} from './heels';
 import {categoryReducer} from './category';
 import {costumerReducer} from './costumer';
+import { lelangReducer } from './lelang';
 
 
 const reducer = combineReducers({
@@ -18,7 +19,8 @@ const reducer = combineReducers({
   pakaianReducer,
   heelsReducer,
   categoryReducer,
-  costumerReducer
+  costumerReducer,
+  lelangReducer
 });
 
 export default reducer;
