@@ -6,3 +6,4 @@ export * from './pakaian';
 export * from './heels';
 export * from './category';
 export * from './costumer';
+export * from './lelang';

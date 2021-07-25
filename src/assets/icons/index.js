@@ -38,7 +38,8 @@ import Ic_send from './ic_send.svg';
 import Ic_admin from './ic_admin.svg';
 import Ic_status_lelang from './ic_status_lelang.svg';
 import Ic_pemenang_lelang from './ic_pemenang_lelang.svg';
-import Ic_history_lelang from './ic_history_lelang.svg'
+import Ic_history_lelang from './ic_history_lelang.svg';
+import Ic_gagal from './ic_gagal.svg';
 
 export {
   Ic_arrow_back,
@@ -81,5 +82,6 @@ export {
   Ic_admin,
   Ic_status_lelang,
   Ic_history_lelang,
-  Ic_pemenang_lelang
+  Ic_pemenang_lelang,
+  Ic_gagal
 };

@@ -25,6 +25,8 @@ import ListCostumer from './ListCostumer';
 import DetailLelang from './DetailLelang';
 import LelangStatus from './LelangStatus';
 import Timer from './Timer';
+import LelangItem from './LelangItem';
+import DetailStatusLelang from './DetailStatusLelang';
 
 export {
   Headers,
@@ -53,5 +55,7 @@ export {
   ListCostumer,
   DetailLelang,
   LelangStatus,
-  Timer
+  Timer,
+  LelangItem,
+  DetailStatusLelang
 };
