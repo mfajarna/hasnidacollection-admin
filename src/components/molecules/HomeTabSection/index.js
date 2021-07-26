@@ -90,7 +90,7 @@ const PopularSection = () => {
             stock={itemPopular.stock}
             rating={itemPopular.rate}
             image={{uri: itemPopular.picturePath}}
-            onPress={() => navigation.navigate('ItemDetail', itemPopular)}
+            onPress={() => navigation.navigate('LelangDetail', itemPopular)}
           />
         );
       })}
@@ -120,7 +120,7 @@ const RecommendedSection = () => {
             stock={itemRecommended.stock}
             rating={itemRecommended.rate}
             image={{uri: itemRecommended.picturePath}}
-            onPress={() => navigation.navigate('ItemDetail', itemRecommended)}
+            onPress={() => navigation.navigate('LelangDetail', itemRecommended)}
           />
         );
       })}

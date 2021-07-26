@@ -28,6 +28,8 @@ import {
   LelangBarang,
   LelangDetail,
   StatusLelang,
+  PememangLelang,
+  HistoryLelang,
 } from '../pages';
 import {BottomNavigator} from '../components';
 
@@ -157,6 +159,16 @@ const Router = () => {
       <Stack.Screen
         name="StatusLelang"
         component={StatusLelang}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PemenangLelang"
+        component={PememangLelang}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="HistoryLelang"
+        component={HistoryLelang}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

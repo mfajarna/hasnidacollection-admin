@@ -1,6 +1,7 @@
 const initLelang = {
     dataLelang : [],
     statusLelang: [],
+    pemenangLelang:[]
 }
 
 export const lelangReducer = (state = initLelang, action) => {
@@ -16,6 +17,13 @@ export const lelangReducer = (state = initLelang, action) => {
         return {
             ...state,
             statusLelang : action.value
+        }
+    }
+    if(action.type === "SET_PEMENANG_LELANG")
+    {
+        return{
+            ...state,
+            pemenangLelang: action.value
         }
     }
 

@@ -57,14 +57,14 @@ const LelangBarang = ({navigation}) => {
              <View style={styles.kategoriItem}>
                     <LelangStatus
                     label="Pemenang Lelang"
-                    onPress={() => navigation.navigate('CategoryPakaian')}
+                    onPress={() => navigation.navigate('PemenangLelang')}
                     />
               </View>
 
             <View style={styles.kategoriItem}>
                     <LelangStatus
                     label="History Lelang"
-                    onPress={() => navigation.navigate('CategoryPakaian')}
+                    onPress={() => navigation.navigate('HistoryLelang')}
                     />
               </View>
                 </ScrollView>

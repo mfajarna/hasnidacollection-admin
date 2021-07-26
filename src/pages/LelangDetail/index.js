@@ -12,7 +12,6 @@ const LelangDetail = ({route, navigation}) => {
     const dispatch = useDispatch();
     const [token, setToken] = useState('');
     const [form,setForm] = useForm({
-        time: '',
         bid: '',
         status: 'ON_PROGRESS'
     })
@@ -33,7 +32,7 @@ const LelangDetail = ({route, navigation}) => {
 
     const onClick = () => {
         dispatch(setLoading(true))
-        if(form.time === '' || form.bid === '')
+        if(form.bid === '')
         {
             showMessage('Data tidak boleh ada yang kosong!')
             dispatch(setLoading(false))
@@ -51,7 +50,7 @@ const LelangDetail = ({route, navigation}) => {
                 }
             })
         ]).then(axios.spread((res1,res2) => {
-            navigation.navigate('LelangBarang');
+            navigation.reset({index: 0, routes:[{name:'LelangBarang'}]})
             dispatch(setLoading(false))
             showMessage('Lelang berhasil ditambahkan!', 'success');
         })).catch(err => {
@@ -68,14 +67,6 @@ const LelangDetail = ({route, navigation}) => {
             <Gap height={14} />
             <Text style={styles.desc}>Masukan dalam satuan menit</Text>
             <Gap height={8} />
-            <View style={styles.setTime}>
-                <Text style={styles.desc}>Set Time</Text>
-                <TimeInput 
-                keyboardType="numeric" 
-                value={form.time}
-                onChangeText={value => setForm('time', value)}
-                />
-            </View>
             <Gap height={14} />
             <Text style={styles.desc}>Masukan jumlah minimal bid</Text>
             <Gap height={8} />

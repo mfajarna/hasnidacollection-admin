@@ -24,6 +24,8 @@ import PesananDetail from './PesananDetail';
 import LelangBarang from './LelangBarang';
 import LelangDetail from './LelangDetail';
 import StatusLelang from './StatusLelang';
+import HistoryLelang from './HistoryLelang';
+import PememangLelang from './PemenangLelang';
 
 export {
   SplashScreen,
@@ -51,5 +53,7 @@ export {
   PesananDetail,
   LelangBarang,
   LelangDetail,
-  StatusLelang
+  StatusLelang,
+  HistoryLelang,
+  PememangLelang
 };
