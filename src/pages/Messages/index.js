@@ -1,14 +1,51 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import { Headers, InputChat, ListAdmin } from '../../components'
+import { Headers, InputChat, ListAdmin, AdminSection } from '../../components'
 import firebase from '../../config/Fire'
 import { getData } from '../../utils'
 
 const Messages = ({navigation}) => {
+    const [admin, setAdmin] = useState([]);
+    
+  const getUserData = () => {
+    getData('user').then(res => {
+      const data = res;
+    });
+  };
+
+    const getAdmin = () => {
+    firebase.database()
+      .ref('users/')
+      .limitToLast(5)
+      .once('value')
+      .then(res => {
+        if (res.val()) {
+          const oldData = res.val();
+          const data = [];
+          Object.keys(oldData).map(key => {
+            data.push({
+              id: key,
+              data: oldData[key],
+            });
+          });
+          setAdmin(data);
+        }
+      })
+      .catch(err => {
+        showError(err.message);
+      });
+  }
     const [user, setUser] = useState({});
     const [historyChat, setHistoryChat] = useState([]);
 
+    
     useEffect(() =>{
+        getAdmin();
+        getUserData();
+        navigation.addListener('focus', () => {
+        getUserData();
+        });
+
         getDataUserFromLocal();
         const rootDB = firebase.database().ref();
         const urlHistory = `messages/${user.uid}/`;
@@ -36,12 +73,11 @@ const Messages = ({navigation}) => {
         setHistoryChat(data);
       }
     });
-    },[user.uid])
+    },[user.uid,navigation])
 
 
     const getDataUserFromLocal = () => {
     getData('user').then(res => {
-        console.log('user data : ', res)
       setUser(res);
     });
   };
@@ -52,18 +88,13 @@ const Messages = ({navigation}) => {
                 <View style={styles.chat}>
                     <View>
 
-                {historyChat.map(chat => {
-                    const dataAdmin = {
-                        id: chat.detailAdmin.uid,
-                        data: chat.detailAdmin
-                    }
-                    return(
-                        <ListAdmin
-                            key={chat.id}
-                            name={chat.detailAdmin.name}    
-                            desc={chat.lastContentChat}
-                            onPress={() => navigation.navigate('Chatting', dataAdmin)}
-                        />
+                {admin.map(admin => {
+                  return(
+                    <AdminSection
+                      key={admin.id} 
+                      name={admin.data.name}
+                      onPress={() => navigation.navigate('Chatting', admin)}
+                      />
                     )
                 })}
                 </View>

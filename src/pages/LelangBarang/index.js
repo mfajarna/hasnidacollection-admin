@@ -57,7 +57,7 @@ const LelangBarang = ({navigation}) => {
              <View style={styles.kategoriItem}>
                     <LelangStatus
                     label="Pemenang Lelang"
-                    onPress={() => navigation.navigate('PemenangLelang')}
+                    onPress={() => navigation.navigate('BarangLelang')}
                     />
               </View>
 

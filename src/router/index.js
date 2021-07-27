@@ -30,6 +30,7 @@ import {
   StatusLelang,
   PememangLelang,
   HistoryLelang,
+  BarangLelang,
 } from '../pages';
 import {BottomNavigator} from '../components';
 
@@ -169,6 +170,11 @@ const Router = () => {
       <Stack.Screen
         name="HistoryLelang"
         component={HistoryLelang}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="BarangLelang"
+        component={BarangLelang}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

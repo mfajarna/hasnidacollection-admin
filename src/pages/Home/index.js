@@ -14,6 +14,7 @@ const Home = ({onPress, navigation}) => {
   const [admin, setAdmin] = useState([]);
 
   useEffect(() => {
+     getAdmin();
     getUserData();
     navigation.addListener('focus', () => {
       getUserData();
@@ -25,6 +26,28 @@ const Home = ({onPress, navigation}) => {
       const data = res;
     });
   };
+
+    const getAdmin = () => {
+    firebase.database()
+      .ref('users/')
+      .once('value')
+      .then(res => {
+        if (res.val()) {
+          const oldData = res.val();
+          const data = [];
+          Object.keys(oldData).map(key => {
+            data.push({
+              id: key,
+              data: oldData[key],
+            });
+          });
+          setAdmin(data);
+        }
+      })
+      .catch(err => {
+        showError(err.message);
+      });
+  }
 
   return (
     <View style={styles.pages}>

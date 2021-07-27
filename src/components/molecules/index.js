@@ -27,6 +27,7 @@ import LelangStatus from './LelangStatus';
 import Timer from './Timer';
 import LelangItem from './LelangItem';
 import DetailStatusLelang from './DetailStatusLelang';
+import DetailPemenangLelang from './DetailPemenangLelang';
 
 export {
   Headers,
@@ -57,5 +58,6 @@ export {
   LelangStatus,
   Timer,
   LelangItem,
-  DetailStatusLelang
+  DetailStatusLelang,
+  DetailPemenangLelang
 };

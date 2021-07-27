@@ -65,9 +65,6 @@ const LelangDetail = ({route, navigation}) => {
             <Text style={styles.desc}>Detail Lelang</Text>
             <DetailLelang name={name} stock={stock} price={price} type={types} />
             <Gap height={14} />
-            <Text style={styles.desc}>Masukan dalam satuan menit</Text>
-            <Gap height={8} />
-            <Gap height={14} />
             <Text style={styles.desc}>Masukan jumlah minimal bid</Text>
             <Gap height={8} />
             <View style={styles.setTime}>

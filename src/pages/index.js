@@ -26,6 +26,7 @@ import LelangDetail from './LelangDetail';
 import StatusLelang from './StatusLelang';
 import HistoryLelang from './HistoryLelang';
 import PememangLelang from './PemenangLelang';
+import BarangLelang from './BarangLelang'
 
 export {
   SplashScreen,
@@ -55,5 +56,6 @@ export {
   LelangDetail,
   StatusLelang,
   HistoryLelang,
-  PememangLelang
+  PememangLelang,
+  BarangLelang,
 };
