@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import {DetailPemenangLelang, Headers} from '../../components'
 import { getHistoryLelang } from '../../redux/action'
@@ -17,6 +17,7 @@ const BarangLelang = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Headers title="Barang Lelang" subTitle="list barang yang sudah dilelang" onBack={() => navigation.reset({index: 0, routes:[{name: 'LelangBarang'}]})} />
+            <ScrollView>
             <View style={styles.content}>
                 {historyLelang.map(history => {
                     return(
@@ -32,8 +33,8 @@ const BarangLelang = ({navigation}) => {
                         />
                     )
                 })}
-                
             </View>
+            </ScrollView>
         </View>
     )
 }
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
     content:{
         flex: 1,
         backgroundColor: 'white',
-        paddingHorizontal: 25
+        paddingHorizontal: 25,
+        paddingVertical: 5,
     }
 })
