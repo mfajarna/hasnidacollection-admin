@@ -16,7 +16,6 @@ const Messages = ({navigation}) => {
     const getAdmin = () => {
     firebase.database()
       .ref('users/')
-      .limitToLast(5)
       .once('value')
       .then(res => {
         if (res.val()) {
@@ -83,23 +82,21 @@ const Messages = ({navigation}) => {
   };
     return (
         <View style={styles.pages}>
-            <View>
+          <ScrollView>
                 <Headers title="Messages" subTitle="Cek pesan dari pelanggan disini!" />
+                  
                 <View style={styles.chat}>
-                    <View>
-
                 {admin.map(admin => {
                   return(
                     <AdminSection
                       key={admin.id} 
-                      name={admin.data.name}
+                      name={admin.data.email}
                       onPress={() => navigation.navigate('Chatting', admin)}
                       />
                     )
                 })}
                 </View>
-                </View>
-            </View>
+                </ScrollView>
         </View>
     )
 }
@@ -113,5 +110,10 @@ const styles = StyleSheet.create({
     },
     chat: {
         backgroundColor: 'white',
-    }
+        paddingHorizontal: 20,
+        flex: 1,
+        paddingVertical: 20,
+        marginBottom: 10,
+    },
+
 })
