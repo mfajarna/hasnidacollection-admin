@@ -81,7 +81,7 @@ const Home = ({onPress, navigation}) => {
           </View>
           <View style={styles.fitur}>
             <View style={styles.content}>
-              <Fitur label="Tukar Barang" />
+              <Fitur label="Tukar Barang" onPress={() => navigation.navigate('TukarBarang')} />
             </View>
             <View style={styles.content}>
               <Fitur label="Tentang Kami" />

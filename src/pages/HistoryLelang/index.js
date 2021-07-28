@@ -18,11 +18,12 @@ const HistoryLelang = ({navigation}) => {
             <View style={styles.content}>
                 {historyLelang.map(history => {
                     return(
-                        <DetailPemenangLelang 
+                        <DetailPemenangLelang
+                        key={history.id} 
                         image={history.collection.picturePath} 
                         nama={history.collection.name}
                         desc={history.collection.description}
-                        type="detail-lelang"
+                        type="history-lelang"
                         date={history.updated_at}
                         status={history.status}
                         jumlah_bid={history.bid}

@@ -44,4 +44,18 @@ export const getPemenangLelang = (id) => dispatch => {
         })
     })
 }
-    
+
+export const getTukarBarang = () => dispatch => {
+    getData('token').then(resToken => {
+        axios.get(`http://27.112.78.10/api/allBarang`, {
+            headers: {
+                Authorization : resToken.value
+            }
+        }).then(resData => {
+            dispatch({type: 'SET_TUKAR_BARANG', value: resData.data.data.data})
+            console.log(resData);
+        }).catch(err => {
+            console.log(err.message)
+        })
+    })
+}

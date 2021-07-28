@@ -17,8 +17,7 @@ const DetailPemenangLelang = ({nama,status,nama_pemenang,jumlah_bid,type,date,im
                     </View>
                 <View style={styles.content}>
                         <Text style={styles.text}>{nama}</Text>
-                        <Text style={styles.text}>Minimal Bid: <Number number={bid} /></Text>
-                        <Text style={styles.text}>Pemenang Lelang</Text>
+                        <Text style={styles.text}>Nama Pemenang:</Text>
                         <Text style={styles.textPemenang}>{nama_pemenang}</Text>
                         <Text style={styles.textPemenang}>Jumlah Bid: <Number number={jumlah_bid} /></Text>
                         <Text style={styles.textPemenang}>Waktu Lelang: {formatedDatex}</Text>
@@ -46,6 +45,26 @@ const DetailPemenangLelang = ({nama,status,nama_pemenang,jumlah_bid,type,date,im
                         <Text style={styles.statusText}>{status}</Text>
                     </View>
                 </TouchableOpacity>
+                 
+                )
+
+                case 'history-lelang':
+                const formatedDatei = new Date(date).toDateString();
+                return(
+                  <View style={styles.contentBarang}>
+                        <View style={styles.image}>
+                            <Image style={styles.images} source={{ uri:image }}/>
+                        </View>
+                        <View style={styles.content}>
+                                <Text style={styles.text}>{nama}</Text>
+                                <Text style={styles.textPemenang}>{desc}</Text>
+                                <Text style={styles.textPemenang}>Selesai pada: {formatedDatei}</Text>
+                                <Text style={styles.textPemenang}>Jumlah Bid: <Number number={jumlah_bid} /></Text>
+                        </View>
+                    <View style={styles.status}>
+                        <Text style={styles.statusText}>{status}</Text>
+                    </View>
+                </View>
                  
                 )
         }

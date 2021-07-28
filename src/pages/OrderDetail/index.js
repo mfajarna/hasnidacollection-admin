@@ -1,96 +1,100 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View, Image} from 'react-native';
 import {DummyImg1} from '../../assets';
 import {Headers, ItemListFood, ItemValue} from '../../components/molecules';
-import {Button} from '../../components/atoms';
+import {Button, Gap} from '../../components/atoms';
 import axios from 'axios';
-import { getData } from '../../utils';
+import { getData, showMessage } from '../../utils';
 
 const OrderDetail = ({route, navigation}) => {
 
-  const order = route.params;
+  const {collection,alasan_tukar_barang,buktiPhoto,id,id_collection,id_users,users} = route.params;
   
-  const onCancel = () => {
-
+  const onSubmit = () => {
     const data = {
-      status: 'CANCELLED'
+      status: 'KONFIRMASI'
     }
 
     getData('token').then(resToken => {
-      axios.post(`http://ecommerce.iottelnet.com/api/transaction/${order.id}`, data, {
+      axios.post(`http://27.112.78.10/api/statusBarang/${id}`, data, {
       headers: {
         'Authorization' : resToken.value
       }
     }).then(res => {
-      console.log('success cancel order');
+      showMessage('Berhasil Konfirmasi Data', 'success')
       navigation.reset({
         index: 0,
         routes: [
-          {name: 'MainApp', screen: 'Keranjang'}
+          {name: 'TukarBarang'}
         ]
       })
     }).catch(err => {
       console.log('err: ', err)
     })
     })
+  }
 
+  const onCancel = () => {
+
+     const data = {
+      status: 'CANCELLED'
+    }
+
+    getData('token').then(resToken => {
+      axios.post(`http://27.112.78.10/api/statusBarang/${id}`, data, {
+      headers: {
+        'Authorization' : resToken.value
+      }
+    }).then(res => {
+      showMessage('Berhasil Konfirmasi Data','success')
+      navigation.reset({
+        index: 0,
+        routes: [
+          {name: 'TukarBarang'}
+        ]
+      })
+    }).catch(err => {
+      console.log('err: ', err)
+    })
+    })
     
   }
   return (
     <View style={styles.container}>
       <Headers
-        title="Pembayaran"
-        subTitle="Silahkan cek pembayaran pesananmu"
-        onBack={() => navigation.goBack()}
+        title="Konfirmasi Tukar Barang"
+        subTitle="Cek Detail Konfirmasi Tukar Barang"
+        onBack={() => navigation.reset({index: 0, routes:[{name:'TukarBarang'}]})}
       />
       <ScrollView>
         <View style={styles.content}>
-          <Text style={styles.label}>Order Barang</Text>
-          <ItemListFood
-            type="order-summary"
-            name={order.collection.name}
-            price={order.collection.price}
-            items={order.quantity}
-            image={{ uri: order.collection.picturePath }}
-          />
-          <Text style={styles.label}>Informasi Transaksi</Text>
-          <ItemValue label={order.collection.name} value={order.collection.price} type="currency"/>
-          <ItemValue label="Kurir Pengiriman" value="SiCepat-BEST" />
-          <ItemValue label="No. Transaksi" value="022303004185806" />
-          <ItemValue
-            label="Total Harga"
-            value={order.total}
-            type="currency"
-            valueColor="#1ABC9C"
-          />
+          <Text style={styles.label}>Informasi Barang</Text>
+          <ItemValue label="Nama Barang" value={collection.name} />
+          <ItemValue label="Deskripsi" value={collection.description} />
+          <ItemValue label="Oleh" value={users.name} />
+          <ItemValue label="Email" value={users.email} />
+          <ItemValue label="Alasan Tukar" value={alasan_tukar_barang} />
         </View>
 
-        <View style={styles.content}>
-          <Text style={styles.label}>Informasi Pembeli:</Text>
-          <ItemValue label="Nama" value={order.user.name} />
-          <ItemValue label="No. Handphone" value={order.user.phoneNumber} />
-          <ItemValue label="Alamat" value={order.user.address} />
-          <ItemValue label="No Rumah" value={order.user.houseNumber} />
-          <ItemValue label="Kota/Kab" value={order.user.city} />
-          <ItemValue label="Kecamatan" value={order.user.kecamatan} />
-          <ItemValue label="Kode Pos" value={order.user.postal_code} />
+        <View style={styles.contentImage}>
+          <Image style={styles.image} source={{ uri:buktiPhoto }} />
         </View>
 
-        <View style={styles.content}>
-          <Text style={styles.label}>Order Status:</Text>
-          <ItemValue label={`HSND${order.id}`} value={order.status} valueColor={order.status === 'CANCELLED' ? 'red' : '#1ABC9C'} />
-        </View>
       </ScrollView>
       <View style={styles.button}>
-        {order.status === 'PENDING' && (
-          <Button
-          text="Cancel My Order"
-          onPress={onCancel}
-          color="#D9435E"
+        <Button
+          text="Konfirmasi"
+          onPress={onSubmit}
+          color="#50CB93"
           textColor="white"
         />
-        )}
-        
+        <Gap height={5} />
+        <Button
+          text="Tolak"
+          onPress={onCancel}
+          color="#FF616D"
+          textColor="white"
+        />
       </View>
     </View>
   );
@@ -102,11 +106,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  contentImage: {
+    backgroundColor: 'white',
+    paddingHorizontal: 24,
+    paddingVertical: 16,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems:'center'
+  },
   content: {
     backgroundColor: 'white',
     paddingHorizontal: 24,
     paddingVertical: 16,
-    marginTop: 20,
     flex: 1,
   },
   label: {
@@ -119,4 +130,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 14,
   },
+  image:{
+    width: 250,
+    height: 250,
+    borderRadius: 10,
+  }
 });
