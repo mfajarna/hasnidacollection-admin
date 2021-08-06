@@ -6,6 +6,7 @@ import { getData } from '../../utils'
 
 const Messages = ({navigation}) => {
     const [admin, setAdmin] = useState([]);
+
     
   const getUserData = () => {
     getData('user').then(res => {
@@ -63,8 +64,6 @@ const Messages = ({navigation}) => {
             detailAdmin: detailAdmin.val(),
             ...oldData[key],
           });
-
-          console.log(data)
         });
 
         await Promise.all(promises);

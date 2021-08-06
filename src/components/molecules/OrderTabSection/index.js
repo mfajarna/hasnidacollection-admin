@@ -120,7 +120,6 @@ const PastOrders = () => {
             key={order.id}
             rating={order.collection.rate}
             image={{uri: order.collection.picturePath}}
-            onPress={() => navigation.navigate('OrderDetail', order)}
             type="past-orders"
             items={order.quantity}
             price={order.total}

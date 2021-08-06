@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
@@ -26,7 +27,7 @@ const ItemListFood = ({
 
 
   const[token,setToken] = useState('');
-  
+    const navigation = useNavigation()
   useEffect(() => {
     getData('token').then(resToken => {
       setToken(resToken.value)
@@ -43,6 +44,7 @@ const ItemListFood = ({
             }
         }).then(res => {
             showMessage('Berhasil konfirmasi order','success');
+            navigation.reset({index: 0, routes:[{name: 'MainApp'}]})
            
         }).catch(err => {
             console.log(err.message);
