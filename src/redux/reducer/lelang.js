@@ -40,7 +40,7 @@ export const lelangReducer = (state = initLelang, action) => {
             historyLelang: action.value
         }
     }
-
+    
     if(action.type === "SET_TUKAR_BARANG")
     {
         return{
