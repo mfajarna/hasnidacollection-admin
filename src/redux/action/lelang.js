@@ -59,3 +59,63 @@ export const getTukarBarang = () => dispatch => {
         })
     })
 }
+
+export const getKonfirmasiLelang = (status) => dispatch => {
+    getData('token').then(resToken =>{
+        axios.get(`http://27.112.78.10/api/pemenang-lelang-admin?status=${status}`, {
+            headers:{
+                Authorization: resToken.value
+            }
+        }).then(res => {
+            dispatch({type: 'SET_KONFIRMASI_LELANG', value: res.data.data.data})
+            console.log(res)
+        }).catch(err =>{
+            console.log(err.message)
+        })
+    })
+}
+
+export const getDikemasLelang = () => dispatch => {
+    getData('token').then(resToken =>{
+        axios.get(`http://27.112.78.10/api/pemenang-lelang-admin?status=KONFIRMASI`, {
+            headers:{
+                Authorization: resToken.value
+            }
+        }).then(res => {
+            dispatch({type: 'SET_KONFIRMASI_DIKEMAS', value: res.data.data.data})
+            console.log(res)
+        }).catch(err =>{
+            console.log(err.message)
+        })
+    })
+}
+
+export const getDeliveryLelang = () => dispatch => {
+    getData('token').then(resToken =>{
+        axios.get(`http://27.112.78.10/api/pemenang-lelang-admin?status=ON_DELIVERY`, {
+            headers:{
+                Authorization: resToken.value
+            }
+        }).then(res => {
+            dispatch({type: 'SET_DELIVERY', value: res.data.data.data})
+            console.log(res)
+        }).catch(err =>{
+            console.log(err.message)
+        })
+    })
+}
+
+export const getDoneLelang = () => dispatch => {
+    getData('token').then(resToken =>{
+        axios.get(`http://27.112.78.10/api/pemenang-lelang-admin?status=DONE`, {
+            headers:{
+                Authorization: resToken.value
+            }
+        }).then(res => {
+            dispatch({type: 'SET_DONE', value: res.data.data.data})
+            console.log(res)
+        }).catch(err =>{
+            console.log(err.message)
+        })
+    })
+}

@@ -10,6 +10,7 @@ const BarangLelang = ({navigation}) => {
     const dispatch = useDispatch();
     const{historyLelang} = useSelector(state => state.lelangReducer);
 
+
     useEffect(() => {
         dispatch(getHistoryLelang());
     },[])

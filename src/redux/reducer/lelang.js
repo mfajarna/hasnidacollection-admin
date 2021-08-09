@@ -3,7 +3,11 @@ const initLelang = {
     statusLelang: [],
     pemenangLelang:[],
     historyLelang: [],
-    dataTukarBarang: []
+    dataTukarBarang: [],
+    konfirmasiLelang: [],
+    dikemasLelang: [],
+    deliveryLelang: [],
+    doneLelang: []
 }
 
 export const lelangReducer = (state = initLelang, action) => {
@@ -44,7 +48,39 @@ export const lelangReducer = (state = initLelang, action) => {
             dataTukarBarang: action.value
         }
     }
+    if(action.type === "SET_KONFIRMASI_LELANG")
+    {
+        return{
+            ...state,
+            konfirmasiLelang: action.value
+        }
+    }
 
+    if(action.type === "SET_KONFIRMASI_DIKEMAS")
+    {
+        return{
+            ...state,
+            dikemasLelang: action.value
+        }
+    }
+
+    
+    if(action.type === "SET_DELIVERY")
+    {
+        return{
+            ...state,
+            deliveryLelang: action.value
+        }
+    }
+
+    
+    if(action.type === "SET_DONE")
+    {
+        return{
+            ...state,
+            doneLelang: action.value
+        }
+    }
 
     return state;
 }

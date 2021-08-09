@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import {Number} from '../../molecules'
+import {Number, Gap} from '../../molecules'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { API_HOST, getData, showMessage } from '../../../utils'
 import { useNavigation } from '@react-navigation/native'
@@ -41,6 +41,7 @@ const DetailStatusLelang = ({image,status,name,bid,id}) => {
             <View style={styles.content}>
                 <Text style={styles.text}>{name}</Text>
                  <Text style={styles.text}>Minimal Bid: <Number number={bid} /></Text>
+                 
             <TouchableOpacity style={styles.buttonBayar} activeOpacity={0.6} onPress={onSubmit}>
                 <Text style={styles.textBayar}>Selesai</Text>
         </TouchableOpacity>
@@ -85,6 +86,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#26B99A',
         padding: 6,
         borderRadius: 3,
+        marginTop: 10,
   },
   textBayar:{
     fontSize: 14,

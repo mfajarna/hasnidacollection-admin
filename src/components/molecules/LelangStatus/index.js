@@ -19,6 +19,13 @@ const LelangStatus = ({label, onPress}) => {
             )
         }
 
+        if(label === 'Konfirmasi Lelang')
+        {
+            return (
+                <Ic_pemenang_lelang />
+            )
+        }
+
         if(label === 'History Lelang')
         {
             return(

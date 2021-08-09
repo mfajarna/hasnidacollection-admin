@@ -1,9 +1,11 @@
+import axios from 'axios'
 import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { DummyImg1 } from '../../../assets'
+import { API_HOST, getData } from '../../../utils'
 import Number from '../Number'
 
-const DetailPemenangLelang = ({nama,status,nama_pemenang,jumlah_bid,type,date,image,desc,onPress,bid}) => {
+const DetailPemenangLelang = ({nama,status,nama_pemenang,jumlah_bid,type,date,image,desc,onPress}) => {
 
     const renderContent = () => {
         switch (type)
@@ -21,6 +23,9 @@ const DetailPemenangLelang = ({nama,status,nama_pemenang,jumlah_bid,type,date,im
                         <Text style={styles.textPemenang}>{nama_pemenang}</Text>
                         <Text style={styles.textPemenang}>Jumlah Bid: <Number number={jumlah_bid} /></Text>
                         <Text style={styles.textPemenang}>Waktu Lelang: {formatedDatex}</Text>
+                        <TouchableOpacity style={styles.button} onPress={onPress} >
+                            <Text style={styles.textNotifikasi}>Beritahu Pemenang</Text>    
+                        </TouchableOpacity>
                 </View>
                     <View style={styles.status}>
                         <Text style={styles.statusText}>{status}</Text>
@@ -133,5 +138,16 @@ const styles = StyleSheet.create({
     },
     content:{
         paddingHorizontal: 5,
+    },
+    button: {
+        padding: 8,
+        marginTop: 10,
+        backgroundColor: "green",
+        borderRadius: 9
+    },
+    textNotifikasi:{
+        color: 'white',
+        textAlign : 'center',
+        fontFamily: 'Nunito-SemiBold'
     }
 })

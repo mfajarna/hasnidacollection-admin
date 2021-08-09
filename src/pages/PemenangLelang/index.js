@@ -4,10 +4,19 @@ import { DummyImg1 } from '../../assets'
 import {DetailPemenangLelang, Headers} from '../../components'
 import { useDispatch, useSelector } from 'react-redux';
 import { getPemenangLelang } from '../../redux/action';
+import { API_HOST, getData } from '../../utils';
+import axios from 'axios';
 
 const PememangLelang = ({navigation, image,status,name,bid, route}) => {
     const{id} = route.params;
     const dispatch = useDispatch();
+
+    const objData = {
+        users_id: '',
+        collection_id: '',
+        lelangdetail_id: '',
+        status: 'ON_CONFIRMATION'
+    }
 
     const{pemenangLelang} = useSelector(state => state.lelangReducer);
 
@@ -15,6 +24,29 @@ const PememangLelang = ({navigation, image,status,name,bid, route}) => {
      dispatch(getPemenangLelang(id))
     }, [])
 
+    console.log('pemenang lelang', pemenangLelang);
+
+ 
+    pemenangLelang.map(data => {
+            objData.users_id = data.id_users
+            objData.collection_id = data.id_collection
+            objData.lelangdetail_id = data.id
+    })
+
+    const onSubmitData = () => {
+        getData('token').then(resToken => {
+            axios.post(`${API_HOST.url}/create-pemenang-lelang`, objData,{
+                headers: {
+                    Authorization: resToken.value
+                }
+            }).then(res => {
+                console.log(res)
+                navigation.reset({index: 0, routes:[{name:'BarangLelang'}]})
+            }).catch(err => {
+                console.log(err.message);
+            })
+        })
+    }
 
     return (
         <View style={styles.container}>
@@ -30,6 +62,7 @@ const PememangLelang = ({navigation, image,status,name,bid, route}) => {
                         nama_pemenang={data.user.name}
                         jumlah_bid={data.jumlah_bid}
                         date={data.updated_at}
+                        onPress={onSubmitData}
                     />
                     )
             })}

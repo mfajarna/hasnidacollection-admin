@@ -67,6 +67,12 @@ const LelangBarang = ({navigation}) => {
                     onPress={() => navigation.navigate('HistoryLelang')}
                     />
               </View>
+             <View style={styles.kategoriItem}>
+                    <LelangStatus
+                    label="Konfirmasi Lelang"
+                    onPress={() => navigation.navigate('KonfirmasiLelang')}
+                    />
+              </View>
                 </ScrollView>
           </View>
       </View>

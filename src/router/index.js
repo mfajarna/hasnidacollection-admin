@@ -34,6 +34,8 @@ import {
   TukarBarang,
 } from '../pages';
 import {BottomNavigator} from '../components';
+import KonfirmasiLelang from '../pages/KonfirmasiLelang';
+import KonfirmasiPemenangLelang from '../pages/KonfirmasiPemenangLelang';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -181,6 +183,16 @@ const Router = () => {
       <Stack.Screen
         name="TukarBarang"
         component={TukarBarang}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="KonfirmasiLelang"
+        component={KonfirmasiLelang}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="KonfirmasiPemenangLelang"
+        component={KonfirmasiPemenangLelang}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

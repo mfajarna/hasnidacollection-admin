@@ -22,7 +22,7 @@ const ItemListFood = ({
   itemName,
   section,
   idPesanan,
-
+  namaPemenang
 }) => {
 
 
@@ -66,6 +66,23 @@ const ItemListFood = ({
             <Rating number={rating} />
           </>
         );
+      case 'on-delivered':
+          const x = new Date(date).toDateString();
+        return (
+          <>
+            <View style={{flex: 1}}>
+              <Text style={styles.title}>{name}</Text>
+              <Text style={styles.desc}>
+                {items} items . <Number number={price} />
+              </Text>
+            </View>
+            <View>
+              <Text style={styles.date}>{x}</Text>
+              <Text style={styles.statusDelivery}>{status}</Text>
+            </View>
+          </>
+        );
+
 
       case 'order-summary':
         return (
@@ -91,6 +108,18 @@ const ItemListFood = ({
             </View>
           </>
         );
+        case 'lelang-confirmation':
+          return(
+            <>
+            <View style={{flex: 1}}>
+              <Text style={styles.title}>{name}</Text>
+              <Text style={styles.title}>A.N {namaPemenang}</Text>
+              <Text style={styles.desc}>
+                {items}bid lelang <Number number={price} />
+              </Text>
+            </View>
+            </>
+          )
       case 'past-orders':
         const formatedDate = new Date(date).toDateString();
         return (
