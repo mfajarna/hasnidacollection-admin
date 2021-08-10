@@ -47,7 +47,7 @@ export const getPemenangLelang = (id) => dispatch => {
 
 export const getTukarBarang = () => dispatch => {
     getData('token').then(resToken => {
-        axios.get(`http://27.112.78.10/api/allBarang`, {
+        axios.get('http://27.112.78.10/api/allBarang?status=PENDING', {
             headers: {
                 Authorization : resToken.value
             }
@@ -115,6 +115,81 @@ export const getDoneLelang = () => dispatch => {
             dispatch({type: 'SET_DONE', value: res.data.data.data})
             console.log(res)
         }).catch(err =>{
+            console.log(err.message)
+        })
+    })
+}
+
+export const getTukarBarangKonfirmasi = () => dispatch => {
+    getData('token').then(resToken => {
+        axios.get('http://27.112.78.10/api/allBarang?status=KONFIRMASI', {
+            headers: {
+                Authorization : resToken.value
+            }
+        }).then(resData => {
+            dispatch({type: 'SET_KONFIRMASI_TUKAR', value: resData.data.data.data})
+            console.log('tukar barang konfirmasi',resData);
+        }).catch(err => {
+            console.log(err.message)
+        })
+    })
+}
+
+export const getDikirimPembeli = () => dispatch => {
+    getData('token').then(resToken => {
+        axios.get('http://27.112.78.10/api/allBarang?status=DIKIRIM_PEMBELI', {
+            headers: {
+                Authorization : resToken.value
+            }
+        }).then(resData => {
+            dispatch({type: 'SET_DIKIRIM_PEMBELI', value: resData.data.data.data})
+            console.log('tukar barang konfirmasi',resData);
+        }).catch(err => {
+            console.log(err.message)
+        })
+    })
+}
+
+export const getKonfirmasiAdmin = () => dispatch => {
+    getData('token').then(resToken => {
+        axios.get('http://27.112.78.10/api/allBarang?status=KONFIRMASI_ADMIN', {
+            headers: {
+                Authorization : resToken.value
+            }
+        }).then(resData => {
+            dispatch({type: 'SET_KONFIRMASI_ADMIN', value: resData.data.data.data})
+            console.log('tukar barang konfirmasi',resData);
+        }).catch(err => {
+            console.log(err.message)
+        })
+    })
+}
+
+export const getDikirimAdmin = () => dispatch => {
+    getData('token').then(resToken => {
+        axios.get('http://27.112.78.10/api/allBarang?status=DIKIRIM_ADMIN', {
+            headers: {
+                Authorization : resToken.value
+            }
+        }).then(resData => {
+            dispatch({type: 'SET_DIKIRIM_ADMIN', value: resData.data.data.data})
+            console.log('tukar barang konfirmasi',resData);
+        }).catch(err => {
+            console.log(err.message)
+        })
+    })
+}
+
+export const getDiterimaPembeli = () => dispatch => {
+    getData('token').then(resToken => {
+        axios.get('http://27.112.78.10/api/allBarang?status=DITERIMA_PEMBELI', {
+            headers: {
+                Authorization : resToken.value
+            }
+        }).then(resData => {
+            dispatch({type: 'SET_DITERIMA_PEMBELI', value: resData.data.data.data})
+            console.log('tukar barang konfirmasi',resData);
+        }).catch(err => {
             console.log(err.message)
         })
     })

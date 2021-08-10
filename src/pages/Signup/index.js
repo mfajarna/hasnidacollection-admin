@@ -64,7 +64,7 @@ const Signup = ({navigation}) => {
   const addPhoto = () => {
       ImagePicker.launchImageLibrary(
       {
-        quality: 0.5,
+        quality: 1,
         maxWidth: 200,
         maxHeight: 200
       }, 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity} from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { Headers, Gap, ItemValue } from '../../components'
 import { getTukarBarang } from '../../redux/action'
@@ -15,9 +15,16 @@ const TukarBarang = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Headers title="Tukar Barang" subTitle="Atur Tukar Barang Disini" onBack={() => navigation.navigate('MainApp')} />
+            <View style={styles.contentBox}>
+                <TouchableOpacity style={styles.buttonKonfirmasi} onPress={() => navigation.navigate('DetailTukarBarang')}>
+                    <Text style={styles.textConfirmasi}>Lihat Detail Konfirmasi</Text>
+                </TouchableOpacity>
+            </View>
+
             <Text style={styles.text}>List Konfirmasi Tukar Barang</Text>
             <Gap height={10} />
             <View style={styles.content}>
+                <ScrollView>
                 {dataTukarBarang.map(data => {
                     return(
                         <TouchableOpacity style={styles.containerContent} onPress={() => navigation.navigate('OrderDetail', data)}>
@@ -29,7 +36,9 @@ const TukarBarang = ({navigation}) => {
                         </TouchableOpacity>
                         )
                 })}
+                </ScrollView>
             </View>
+            
         </View>
     )
 }
@@ -55,5 +64,21 @@ const styles = StyleSheet.create({
         padding : 9,
         backgroundColor: '#FAEBE0',
         borderRadius: 10,
+        marginBottom: 10
+    },
+    buttonKonfirmasi:{
+        padding : 9,
+        backgroundColor: '#50CB93',
+        width: 170,
+        borderRadius: 8
+    },
+    contentBox:{
+        paddingHorizontal: 20,
+        marginBottom: 10
+    },
+    textConfirmasi:{
+        fontFamily: 'Nunito-SemiBold',
+        textAlign: 'center',
+        color: 'white'
     }
 })

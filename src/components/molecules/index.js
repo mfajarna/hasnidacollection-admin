@@ -28,6 +28,8 @@ import Timer from './Timer';
 import LelangItem from './LelangItem';
 import DetailStatusLelang from './DetailStatusLelang';
 import DetailPemenangLelang from './DetailPemenangLelang';
+import TukarBarangTabSection from './TukarBarangTabSection';
+import ItemTukarBarang from './ItemTukarBarang';
 
 export {
   Headers,
@@ -59,5 +61,7 @@ export {
   Timer,
   LelangItem,
   DetailStatusLelang,
-  DetailPemenangLelang
+  DetailPemenangLelang,
+  TukarBarangTabSection,
+  ItemTukarBarang
 };

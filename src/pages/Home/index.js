@@ -35,7 +35,7 @@ const Home = ({onPress, navigation}) => {
     notifikasi.requestPermissions();
 
   useEffect(() => {
-     getAdmin();
+    getAdmin();
     getUserData();
     navigation.addListener('focus', () => {
       getUserData();
