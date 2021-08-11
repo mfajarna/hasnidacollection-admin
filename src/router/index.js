@@ -32,12 +32,14 @@ import {
   HistoryLelang,
   BarangLelang,
   TukarBarang,
+  UploadPhotoKoleksi,
 } from '../pages';
 import {BottomNavigator} from '../components';
 import KonfirmasiLelang from '../pages/KonfirmasiLelang';
 import KonfirmasiPemenangLelang from '../pages/KonfirmasiPemenangLelang';
 import Koleksi from '../pages/Koleksi';
 import DetailTukarBarang from '../pages/DetailTukarBarang';
+import UploadPhotoBarcode from '../pages/UploadPhotoBarcode';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -205,6 +207,16 @@ const Router = () => {
       <Stack.Screen
         name="DetailTukarBarang"
         component={DetailTukarBarang}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UploadPhotoKoleksi"
+        component={UploadPhotoKoleksi}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UploadPhotoBarcode"
+        component={UploadPhotoBarcode}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

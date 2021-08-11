@@ -9,6 +9,7 @@ import {categoryReducer} from './category';
 import {costumerReducer} from './costumer';
 import { lelangReducer } from './lelang';
 import { tukarReducer } from './lelang';
+import { koleksiReducer, barcodeReducer } from './koleksi';
 
 
 const reducer = combineReducers({
@@ -22,7 +23,9 @@ const reducer = combineReducers({
   categoryReducer,
   costumerReducer,
   lelangReducer,
-  tukarReducer
+  tukarReducer,
+  koleksiReducer,
+  barcodeReducer
 });
 
 export default reducer;

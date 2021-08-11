@@ -48,8 +48,10 @@ const NewSection = () => {
   }, []);
 
   return (
-    <ScrollView>
+    <View style={{flex: 1,}}> 
+      <ScrollView>
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
+ 
       {newCollection.map(itemNew => {
         return (
           <ItemListFood
@@ -66,6 +68,8 @@ const NewSection = () => {
       })}
     </View>
     </ScrollView>
+    </View>
+
   );
 };
 
@@ -78,8 +82,10 @@ const PopularSection = () => {
     dispatch(getCollectionDataByTypes('popular'));
   }, []);
   return (
-    <ScrollView>
+     <View style={{flex: 1}}> 
+      
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
+      <ScrollView>
       {popular.map(itemPopular => {
         return (
           <ItemListFood
@@ -94,8 +100,11 @@ const PopularSection = () => {
           />
         );
       })}
+      </ScrollView>
     </View>
-    </ScrollView>
+    
+    </View>
+ 
   );
 };
 
@@ -108,8 +117,9 @@ const RecommendedSection = () => {
     dispatch(getCollectionDataByTypes('recommended'));
   }, []);
   return (
-    <ScrollView>
+    <View style={{flex: 1}}> 
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
+      <ScrollView>
       {recommended.map(itemRecommended => {
         return (
           <ItemListFood
@@ -124,8 +134,10 @@ const RecommendedSection = () => {
           />
         );
       })}
+       </ScrollView>
     </View>
-    </ScrollView>
+   
+    </View>
   );
 };
 
