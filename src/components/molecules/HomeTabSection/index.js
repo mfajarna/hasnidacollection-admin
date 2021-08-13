@@ -62,7 +62,7 @@ const NewSection = () => {
             stock={itemNew.stock}
             rating={itemNew.rate}
             image={{uri: itemNew.picturePath}}
-            
+            onPress={() => navigation.navigate('LelangDetail')}
           />
         );
       })}
@@ -96,7 +96,7 @@ const PopularSection = () => {
             stock={itemPopular.stock}
             rating={itemPopular.rate}
             image={{uri: itemPopular.picturePath}}
-           
+            onPress={() => navigation.navigate('LelangDetail')}
           />
         );
       })}
@@ -130,7 +130,7 @@ const RecommendedSection = () => {
             stock={itemRecommended.stock}
             rating={itemRecommended.rate}
             image={{uri: itemRecommended.picturePath}}
-            
+            onPress={() => navigation.navigate('LelangDetail')}
           />
         );
       })}
