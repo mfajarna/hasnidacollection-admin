@@ -10,6 +10,7 @@ import {costumerReducer} from './costumer';
 import { lelangReducer } from './lelang';
 import { tukarReducer } from './lelang';
 import { koleksiReducer, barcodeReducer } from './koleksi';
+import { RekapReducer } from './rekap';
 
 
 const reducer = combineReducers({
@@ -25,7 +26,8 @@ const reducer = combineReducers({
   lelangReducer,
   tukarReducer,
   koleksiReducer,
-  barcodeReducer
+  barcodeReducer,
+  RekapReducer
 });
 
 export default reducer;

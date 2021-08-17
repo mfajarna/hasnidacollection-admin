@@ -30,6 +30,7 @@ import DetailStatusLelang from './DetailStatusLelang';
 import DetailPemenangLelang from './DetailPemenangLelang';
 import TukarBarangTabSection from './TukarBarangTabSection';
 import ItemTukarBarang from './ItemTukarBarang';
+import PembelianTabSection from './PembelianTabSection';
 
 export {
   Headers,
@@ -63,5 +64,6 @@ export {
   DetailStatusLelang,
   DetailPemenangLelang,
   TukarBarangTabSection,
-  ItemTukarBarang
+  ItemTukarBarang,
+  PembelianTabSection,
 };

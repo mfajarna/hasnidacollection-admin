@@ -40,6 +40,7 @@ import KonfirmasiPemenangLelang from '../pages/KonfirmasiPemenangLelang';
 import Koleksi from '../pages/Koleksi';
 import DetailTukarBarang from '../pages/DetailTukarBarang';
 import UploadPhotoBarcode from '../pages/UploadPhotoBarcode';
+import RekapPembelian from '../pages/RekapPembelian';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -217,6 +218,11 @@ const Router = () => {
       <Stack.Screen
         name="UploadPhotoBarcode"
         component={UploadPhotoBarcode}
+        options={{headerShown: false}}
+      />
+        <Stack.Screen
+        name="RekapPembelian"
+        component={RekapPembelian}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

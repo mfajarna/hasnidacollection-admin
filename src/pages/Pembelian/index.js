@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { Headers, HomeTabSection, SearchInput } from '../../components'
+import { Headers, HomeTabSection, PembelianTabSection, SearchInput } from '../../components'
 
 const Pembelian = ({navigation}) => {
     return (
@@ -10,9 +10,12 @@ const Pembelian = ({navigation}) => {
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Koleksi')}>
                     <Text style={styles.text}>+ Collection</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('RekapPembelian')}>
+                    <Text style={styles.text}>Lihat Rekap</Text>
+                </TouchableOpacity>
             </View>
             <View style={styles.tabContainer}>
-                <HomeTabSection />
+                <PembelianTabSection />
             </View>
         </View>
     )
@@ -29,13 +32,16 @@ const styles = StyleSheet.create({
     },
     content:{
         backgroundColor:'white',
-        paddingHorizontal: 25
+        paddingHorizontal: 25,
+        flexDirection: 'row',
+       
     },
     button:{
         padding: 8,
         backgroundColor:'#71EFA3',
         width: 100,
-        borderRadius: 7
+        borderRadius: 7,
+         marginRight: 5
     },
     text:{
         fontFamily: 'Nunito-SemiBold',

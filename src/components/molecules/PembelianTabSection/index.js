@@ -62,7 +62,7 @@ const NewSection = () => {
             stock={itemNew.stock}
             rating={itemNew.rate}
             image={{uri: itemNew.picturePath}}
-            onPress={() => navigation.navigate('LelangDetail', itemNew)}
+        
           />
         );
       })}
@@ -96,7 +96,7 @@ const PopularSection = () => {
             stock={itemPopular.stock}
             rating={itemPopular.rate}
             image={{uri: itemPopular.picturePath}}
-           onPress={() => navigation.navigate('LelangDetail', itemPopular)}
+           
           />
         );
       })}
@@ -130,7 +130,7 @@ const RecommendedSection = () => {
             stock={itemRecommended.stock}
             rating={itemRecommended.rate}
             image={{uri: itemRecommended.picturePath}}
-            onPress={() => navigation.navigate('LelangDetail', itemRecommended)}
+        
           />
         );
       })}
@@ -143,7 +143,7 @@ const RecommendedSection = () => {
 
 const initialLayout = {width: Dimensions.get('window').width};
 
-const HomeTabSection = () => {
+const PembelianTabSection = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: 'first', title: 'New Collection'},
@@ -168,6 +168,6 @@ const HomeTabSection = () => {
   );
 };
 
-export default HomeTabSection;
+export default PembelianTabSection;
 
 const styles = StyleSheet.create({});
