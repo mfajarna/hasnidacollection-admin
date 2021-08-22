@@ -12,7 +12,6 @@ const Koleksi = ({navigation}) => {
            description: '',
            stock: '',
            price: '',
-           rate: '',
            types: '',
            category: '',
            url_barcode:'',
@@ -93,13 +92,6 @@ const Koleksi = ({navigation}) => {
                     value={form.category}
                     onSelectChange={(value) => setForm('category',value)}
                 />
-
-                <TextInput 
-                    label="Rating" 
-                    placeholder="Masukan Rating Koleksi"  
-                    value={form.rate}
-                    keyboardType="numeric"
-                    onChangeText={(value) => setForm('rate', value)} />
                 <Gap height={8} />
 
                 <TextInput 
